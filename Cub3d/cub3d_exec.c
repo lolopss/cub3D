@@ -6,7 +6,7 @@
 /*   By: ldaniel <ldaniel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/26 11:42:53 by ldaniel           #+#    #+#             */
-/*   Updated: 2023/11/15 16:20:21 by ldaniel          ###   ########.fr       */
+/*   Updated: 2023/11/15 16:55:17 by ldaniel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ void	cub3d_exec4(t_data *data, t_player *player)
 			data->hit = 1;
 		else if (data->map[(int)data->exec.map.x][(int)data->exec.map.y] == 'D')
 			data->hit = 2;
-	}+
+	}
 	cub3d_exec5(data, player);
 }
 

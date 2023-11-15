@@ -6,7 +6,7 @@
 /*   By: ldaniel <ldaniel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/02 12:52:59 by ldaniel           #+#    #+#             */
-/*   Updated: 2023/11/15 14:21:50 by ldaniel          ###   ########.fr       */
+/*   Updated: 2023/11/15 16:59:57 by ldaniel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,12 +15,14 @@
 void	w_key(t_data *data)
 {
 	if (data->map[(int)(data->player->x + data->player->dir.x * 0.1 * 2)]
-		[(int)data->player->y] == '9' || data->map[(int)(data->player->x + data->player->dir.x * 0.1 * 2)]
+		[(int)data->player->y] == '9'
+		|| data->map[(int)(data->player->x + data->player->dir.x * 0.1 * 2)]
 		[(int)data->player->y] == 'O')
 		data->player->x += data->player->dir.x * data->player->ms;
 	if (data->map[(int)data->player->x][(int)
-		(data->player->y + data->player->dir.y * data->player->ms * 2)] == '9' || data->map[(int)data->player->x][(int)
-		(data->player->y + data->player->dir.y * data->player->ms * 2)] ==  'O')
+		(data->player->y + data->player->dir.y * data->player->ms * 2)] == '9'
+		|| data->map[(int)data->player->x][(int)
+		(data->player->y + data->player->dir.y * data->player->ms * 2)] == 'O')
 		data->player->y += data->player->dir.y * data->player->ms;
 	cub3d_exec(data);
 }
@@ -28,11 +30,13 @@ void	w_key(t_data *data)
 void	s_key(t_data *data)
 {
 	if (data->map[(int)(data->player->x - data->player->dir.x * 0.1 * 2)]
-		[(int)data->player->y] == '9' || data->map[(int)(data->player->x - data->player->dir.x * 0.1 * 2)]
+		[(int)data->player->y] == '9' ||
+		data->map[(int)(data->player->x - data->player->dir.x * 0.1 * 2)]
 		[(int)data->player->y] == 'O')
 		data->player->x -= data->player->dir.x * data->player->ms;
 	if (data->map[(int)data->player->x][(int)
-		(data->player->y - data->player->dir.y * data->player->ms * 2)] == '9' || data->map[(int)data->player->x][(int)
+		(data->player->y - data->player->dir.y * data->player->ms * 2)] == '9'
+		|| data->map[(int)data->player->x][(int)
 		(data->player->y - data->player->dir.y * data->player->ms * 2)] == 'O')
 		data->player->y -= data->player->dir.y * data->player->ms;
 	cub3d_exec(data);
@@ -41,11 +45,13 @@ void	s_key(t_data *data)
 void	d_key(t_data *data)
 {
 	if (data->map[(int)(data->player->x + data->player->plane.x * 0.1 * 2)]
-		[(int)data->player->y] == '9' || data->map[(int)(data->player->x + data->player->plane.x * 0.1 * 2)]
+		[(int)data->player->y] == '9' ||
+		data->map[(int)(data->player->x + data->player->plane.x * 0.1 * 2)]
 		[(int)data->player->y] == 'O')
 		data->player->x += data->player->plane.x * data->player->ms * 0.5;
 	if (data->map[(int)data->player->x][(int)(data->player->y
-		+ data->player->plane.y * data->player->ms * 2)] == '9' || data->map[(int)data->player->x][(int)(data->player->y
+		+ data->player->plane.y * data->player->ms * 2)] == '9' ||
+		data->map[(int)data->player->x][(int)(data->player->y
 		+ data->player->plane.y * data->player->ms * 2)] == 'O')
 		data->player->y += data->player->plane.y * data->player->ms * 0.5;
 	cub3d_exec(data);
@@ -54,40 +60,17 @@ void	d_key(t_data *data)
 void	a_key(t_data *data)
 {
 	if (data->map[(int)(data->player->x - data->player->plane.x * 0.1 * 2)]
-		[(int)data->player->y] == '9' || data->map[(int)(data->player->x - data->player->plane.x * 0.1 * 2)]
+		[(int)data->player->y] == '9' ||
+		data->map[(int)(data->player->x - data->player->plane.x * 0.1 * 2)]
 		[(int)data->player->y] == 'O')
 		data->player->x -= data->player->plane.x * data->player->ms;
 	if (data->map[(int)data->player->x][(int)(data->player->y
-		- data->player->plane.y * data->player->ms * 2)] == '9' || data->map[(int)data->player->x][(int)(data->player->y
+		- data->player->plane.y * data->player->ms * 2)] == '9' ||
+		data->map[(int)data->player->x][(int)(data->player->y
 		- data->player->plane.y * data->player->ms * 2)] == 'O')
 		data->player->y -= data->player->plane.y * data->player->ms;
 	cub3d_exec(data);
 }
-
-void	open_door(t_data *data)
-{
-	if (data->map[(int)data->player->x + 1][(int)data->player->y] == 'D')
-		data->map[(int)data->player->x + 1][(int)data->player->y] = 'O';
-	else if (data->map[(int)data->player->x + 1][(int)data->player->y] == 'O')
-		data->map[(int)data->player->x + 1][(int)data->player->y] = 'D';
-	if (data->map[(int)data->player->x - 1][(int)data->player->y] == 'D')
-		data->map[(int)data->player->x - 1][(int)data->player->y] = 'O';
-	else if (data->map[(int)data->player->x - 1][(int)data->player->y] == 'O')
-		data->map[(int)data->player->x - 1][(int)data->player->y] = 'D';
-	if (data->map[(int)data->player->x][(int)data->player->y + 1] == 'D')
-		data->map[(int)data->player->x][(int)data->player->y + 1] = 'O';
-	else if (data->map[(int)data->player->x + 1][(int)data->player->y + 1] == 'O')
-		data->map[(int)data->player->x + 1][(int)data->player->y + 1] = 'D';
-	if (data->map[(int)data->player->x][(int)data->player->y - 1] == 'D')
-		data->map[(int)data->player->x][(int)data->player->y - 1] = 'O';
-	else if (data->map[(int)data->player->x][(int)data->player->y - 1] == 'O')
-		data->map[(int)data->player->x][(int)data->player->y - 1] = 'D';
-	cub3d_exec(data);
-}
-
-/*
-DDDDDDDDDDDDDDDN
-*/
 
 int	ft_key(int key, t_data *data)
 {

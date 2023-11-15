@@ -6,7 +6,7 @@
 /*   By: ldaniel <ldaniel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/15 12:00:50 by ldaniel           #+#    #+#             */
-/*   Updated: 2023/11/11 16:07:54 by ldaniel          ###   ########.fr       */
+/*   Updated: 2023/11/15 17:00:22 by ldaniel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -135,6 +135,7 @@ void	set_player_dir(t_data *data);
 void	free_all(t_data *data);
 void	put_player_pos(t_player *player, t_data *data);
 void	my_mlx_pixel_put(t_data *data, int x, int y, int color);
+void	open_door(t_data *data);
 void	find_big_line(char *map, t_parse *parse);
 void	ft_bzero(void *s, size_t n);
 void	init_verif(t_data *data);

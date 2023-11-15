@@ -6,7 +6,7 @@
 /*   By: ldaniel <ldaniel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/25 16:10:06 by ldaniel           #+#    #+#             */
-/*   Updated: 2023/11/11 16:22:07 by ldaniel          ###   ########.fr       */
+/*   Updated: 2023/11/15 16:57:19 by ldaniel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -119,7 +119,8 @@ int	get_door_image(t_data *data, char *path)
 	if (data->textures.door.init != 0)
 		return (print_error("Error\nmore than one door texture in map\n"));
 	door = &data->textures.door;
-	door->img = mlx_xpm_file_to_image(data->mlx, path, &door->width, &door->height);
+	door->img = mlx_xpm_file_to_image(data->mlx, path, &door->width,
+			&door->height);
 	if (!door->img)
 	{
 		print_error("Error\ndoor texture doesn't exist\n");
@@ -130,18 +131,10 @@ int	get_door_image(t_data *data, char *path)
 		print_error("Error\nDoor texture size isn't good\n");
 		return (-1);
 	}
-	door->addr = mlx_get_data_addr(door->img, &door->bits_per_pixel, &door->line_length,
+	door->addr = mlx_get_data_addr(door->img, &door->bits_per_pixel,
+			&door->line_length,
 			&door->endian);
 	data->verif[6] = 1;
 	data->textures.door.init = 1;
 	return (0);
-}
-
-int	get_pixel_color(t_idata *image, int x, int y)
-{
-	char	*pixel_addr;
-
-	pixel_addr = image->addr + (y * image->line_length + x
-			* (image->bits_per_pixel / 8));
-	return (*(unsigned int *)pixel_addr);
 }

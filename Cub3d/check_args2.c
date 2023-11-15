@@ -6,7 +6,7 @@
 /*   By: ldaniel <ldaniel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/23 15:04:19 by ldaniel           #+#    #+#             */
-/*   Updated: 2023/11/11 16:22:02 by ldaniel          ###   ########.fr       */
+/*   Updated: 2023/11/15 14:59:48 by ldaniel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,21 +81,26 @@ int	verif_map_closed(char **map, int x, int y, t_data *data)
 	int	error;
 
 	error = 0;
-	if ((map[x][y] != '0' && map[x][y] != '1' && map[x][y] != '9' && map[x][y] != 'D')
-		|| y == 0 || x == 0 || x == data->parse->max_height
+	if ((map[x][y] != '0' && map[x][y] != '1' && map[x][y] != '9'
+		&& map[x][y] != 'D') || y == 0 || x == 0
+		|| x == data->parse->max_height
 		|| y == data->parse->big_line)
-	{
 		return (-1);
-	}
-	if (map[x][y] != 'D')
-		map[x][y] = '9';
-	if (map[x][y - 1] != '1' && map[x][y - 1] != '9' && map[x][y - 1] != 'D' && error == 0)
+	if (map[x][y] == 'D' && (x != 0 && y != 0 && x !=
+		data->parse->max_height && y != data->parse->big_line))
+		return (-1);
+	map[x][y] = '9';
+	if (map[x][y - 1] != '1' && map[x][y - 1] != '9' && map[x][y - 1] !=
+		'D' && error == 0)
 		error = verif_map_closed(map, x, y - 1, data);
-	if (map[x][y + 1] != '1' && map[x][y + 1] != '9' && map[x][y + 1] != 'D'&& error == 0)
+	if (map[x][y + 1] != '1' && map[x][y + 1] != '9' && map[x][y + 1] !=
+		'D' && error == 0)
 		error = verif_map_closed(map, x, y + 1, data);
-	if (map[x - 1][y] != '1' && map[x - 1][y] != '9' && map[x - 1][y] != 'D' && error == 0)
+	if (map[x - 1][y] != '1' && map[x - 1][y] != '9' && map[x - 1][y] !=
+		'D' && error == 0)
 		error = verif_map_closed(map, x - 1, y, data);
-	if (map[x + 1][y] != '1' && map[x + 1][y] != '9' && map[x+1][y] != 'D' && error == 0)
+	if (map[x + 1][y] != '1' && map[x + 1][y] != '9' && map[x + 1][y]
+		!= 'D' && error == 0)
 		error = verif_map_closed(map, x + 1, y, data);
 	return (error);
 }

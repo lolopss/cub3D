@@ -6,7 +6,7 @@
 /*   By: ldaniel <ldaniel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/25 16:15:29 by ldaniel           #+#    #+#             */
-/*   Updated: 2023/11/11 15:02:39 by ldaniel          ###   ########.fr       */
+/*   Updated: 2023/11/15 15:02:45 by ldaniel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,8 +37,9 @@ int	get_color_ceiling(t_data *data, char *str)
 		|| check_num(color[0]) == 1 || check_num(color[1]) == 1
 		|| check_num(color[2]) == 1)
 	{
+		print_error("Error\nError : Non numerical characters within color\n");
 		free_array(color);
-		return (print_error("Error\nError : Non numerical characters within color\n"));
+		return (-1);
 	}
 	r = ft_atoi(color[0]);
 	g = ft_atoi(color[1]);

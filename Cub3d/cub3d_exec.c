@@ -6,7 +6,7 @@
 /*   By: ldaniel <ldaniel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/26 11:42:53 by ldaniel           #+#    #+#             */
-/*   Updated: 2023/11/11 15:24:48 by ldaniel          ###   ########.fr       */
+/*   Updated: 2023/11/15 16:20:21 by ldaniel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,13 +28,13 @@ void	cub3d_exec4(t_data *data, t_player *player)
 			data->exec.map.y += data->exec.step.y;
 			data->side = 1;
 		}
-		if (data->map[(int)data->exec.map.x][(int)data->exec.map.y] == '1')
+		if (data->map[(int)data->exec.map.x][(int)data->exec.map.y] == 'O')
+			data->hit = 0;
+		else if (data->map[(int)data->exec.map.x][(int)data->exec.map.y] == '1')
 			data->hit = 1;
-	}
-	if (data->side == 0)
-		data->perpwalldist = (data->exec.dist.x - data->exec.delta.x);
-	else
-		data->perpwalldist = (data->exec.dist.y - data->exec.delta.y);
+		else if (data->map[(int)data->exec.map.x][(int)data->exec.map.y] == 'D')
+			data->hit = 2;
+	}+
 	cub3d_exec5(data, player);
 }
 
@@ -88,7 +88,6 @@ void	cub3d_exec2(t_data *data, t_player *player)
 
 int	cub3d_exec(t_data *data)
 {
-
 	data->w = (double)data->x_win;
 	data->player->ms = 0.1;
 	data->x = 0;

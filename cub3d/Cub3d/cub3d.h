@@ -6,7 +6,7 @@
 /*   By: ldaniel <ldaniel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/15 12:00:50 by ldaniel           #+#    #+#             */
-/*   Updated: 2023/11/30 18:09:10 by ldaniel          ###   ########.fr       */
+/*   Updated: 2023/12/04 15:43:03 by ldaniel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,6 +107,7 @@ typedef struct s_data
 	void	*img;
 	char	*addr;
 	char	**map;
+	int		parse_init;
 	int		img_init;
 	int		init;
 	int		index_tmp;

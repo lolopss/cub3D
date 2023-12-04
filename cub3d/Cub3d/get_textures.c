@@ -6,7 +6,7 @@
 /*   By: ldaniel <ldaniel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/25 16:10:06 by ldaniel           #+#    #+#             */
-/*   Updated: 2023/11/29 17:30:04 by ldaniel          ###   ########.fr       */
+/*   Updated: 2023/12/04 15:18:46 by ldaniel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -136,60 +136,5 @@ int	get_anim1_image(t_data *data, char *path)
 			&anim1->endian);
 	data->verif[7] = 1;
 	data->textures.anim1.init = 1;
-	return (0);
-}
-
-int	get_anim2_image(t_data *data, char *path)
-{
-	t_idata	*anim2;
-
-	if (data->textures.anim2.init != 0)
-		return (print_error("Error\nmore than one anim2 texture in map\n"));
-	anim2 = &data->textures.anim2;
-	anim2->img = mlx_xpm_file_to_image(data->mlx, path, &anim2->width,
-			&anim2->height);
-	if (!anim2->img)
-	{
-		print_error("Error\nanim2 texture doesn't exist\n");
-		return (-1);
-	}
-	if (anim2->width != 64 || anim2->height != 64)
-	{
-		print_error("Error\nanim2 texture size isn't good\n");
-		return (-1);
-	}
-	anim2->addr = mlx_get_data_addr(anim2->img, &anim2->bits_per_pixel,
-			&anim2->line_length,
-			&anim2->endian);
-	data->verif[8] = 1;
-	data->textures.anim2.init = 1;
-	return (0);
-}
-
-
-int	get_door_image(t_data *data, char *path)
-{
-	t_idata	*door;
-
-	if (data->textures.door.init != 0)
-		return (print_error("Error\nmore than one door texture in map\n"));
-	door = &data->textures.door;
-	door->img = mlx_xpm_file_to_image(data->mlx, path, &door->width,
-			&door->height);
-	if (!door->img)
-	{
-		print_error("Error\ndoor texture doesn't exist\n");
-		return (-1);
-	}
-	if (door->width != 64 || door->height != 64)
-	{
-		print_error("Error\nDoor texture size isn't good\n");
-		return (-1);
-	}
-	door->addr = mlx_get_data_addr(door->img, &door->bits_per_pixel,
-			&door->line_length,
-			&door->endian);
-	data->verif[6] = 1;
-	data->textures.door.init = 1;
 	return (0);
 }

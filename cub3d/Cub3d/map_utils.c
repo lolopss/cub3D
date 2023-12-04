@@ -6,7 +6,7 @@
 /*   By: ldaniel <ldaniel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/20 11:42:47 by ldaniel           #+#    #+#             */
-/*   Updated: 2023/11/29 14:56:44 by ldaniel          ###   ########.fr       */
+/*   Updated: 2023/12/04 15:21:07 by ldaniel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ void	find_big_line(char *map, t_parse *parse)
 
 int	valid_character(char c)
 {
-	if (c == '0' || c == '1' || c == ' ' || c == 'D' || c == 'A' ||c == '\n')
+	if (c == '0' || c == '1' || c == ' ' || c == 'D' || c == 'A' || c == '\n')
 		return (0);
 	if (c == 'N' || c == 'S' || c == 'E' || c == 'W')
 		return (1);

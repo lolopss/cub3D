@@ -6,7 +6,7 @@
 /*   By: ldaniel <ldaniel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/15 16:56:20 by ldaniel           #+#    #+#             */
-/*   Updated: 2023/11/27 15:09:36 by ldaniel          ###   ########.fr       */
+/*   Updated: 2023/12/04 15:21:16 by ldaniel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,11 +28,15 @@ void	open_door(t_data *data)
 
 	dir_x = data->player->dir.x;
 	dir_y = data->player->dir.y;
-	if (data->map[(int)(data->player->x + dir_x)][(int)(data->player->y + dir_y)] == 'D')
-		data->map[(int)(data->player->x + dir_x)][(int)(data->player->y + dir_y)] = 'O';
-	else if (data->map[(int)(data->player->x + dir_x)][(int)(data->player->y + dir_y)] == 'O'
+	if (data->map[(int)(data->player->x + dir_x)]
+	[(int)(data->player->y + dir_y)] == 'D')
+		data->map[(int)(data->player->x + dir_x)]
+		[(int)(data->player->y + dir_y)] = 'O';
+	else if (data->map[(int)(data->player->x + dir_x)]
+	[(int)(data->player->y + dir_y)] == 'O'
 		&& ((int)(data->player->x + dir_x) != data->player->x
 			&& (int)(data->player->y + dir_y) != data->player->y))
-		data->map[(int)(data->player->x + dir_x)][(int)(data->player->y + dir_y)] = 'D';
+		data->map[(int)(data->player->x + dir_x)]
+		[(int)(data->player->y + dir_y)] = 'D';
 	cub3d_exec(data);
 }

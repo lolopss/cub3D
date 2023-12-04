@@ -6,7 +6,7 @@
 /*   By: ldaniel <ldaniel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/03 14:17:18 by ldaniel           #+#    #+#             */
-/*   Updated: 2023/11/30 18:26:49 by ldaniel          ###   ########.fr       */
+/*   Updated: 2023/12/04 15:48:56 by ldaniel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,16 +22,6 @@ void	ft_bzero(void *s, size_t n)
 		((char *)s)[i] = '\0';
 		i++;
 	}
-}
-
-int	ft_strlen(char *s)
-{
-	int	i;
-
-	i = 0;
-	while (s[i])
-		i++;
-	return (i);
 }
 
 void	init_verif(t_data *data)
@@ -75,14 +65,13 @@ void	free_all(t_data *data)
 		mlx_clear_window(data->mlx, data->win);
 		mlx_destroy_window(data->mlx, data->win);
 	}
-	if (data->parse->init)
+	if (data->parse_init)
 		free(data->parse);
 	destroy_images(data);
 	if (data->map)
 		free_map(data);
 	free(data->mlx);
-	if (data->init)
-		free(data);
+	free(data);
 	exit(0);
 }
 

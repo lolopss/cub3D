@@ -6,7 +6,7 @@
 /*   By: ldaniel <ldaniel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/24 11:14:19 by ldaniel           #+#    #+#             */
-/*   Updated: 2023/11/30 18:40:28 by ldaniel          ###   ########.fr       */
+/*   Updated: 2023/12/04 15:44:53 by ldaniel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,8 @@ void	malloc_parse(t_data *data, t_parse *parse, int *bytes)
 {
 	if (!parse)
 		free_all(data);
-	parse->init = 1;
+	data->parse_init = 1;
+	data->parse = parse;
 	*bytes = 1;
 }
 

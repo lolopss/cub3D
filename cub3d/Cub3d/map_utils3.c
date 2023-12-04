@@ -6,7 +6,7 @@
 /*   By: ldaniel <ldaniel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/25 16:21:26 by ldaniel           #+#    #+#             */
-/*   Updated: 2023/11/29 16:39:49 by ldaniel          ###   ########.fr       */
+/*   Updated: 2023/12/04 15:47:51 by ldaniel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,8 +47,9 @@ int	parse_textures(t_data *data, int fd)
 	init_verif(data);
 	while (1)
 	{
-		if ((bytes = read(fd, &t_name, 1)) <= 0)
-			break;
+		bytes = read(fd, &t_name, 1);
+		if (bytes <= 0)
+			break ;
 		t_name[bytes] = '\0';
 		if (verify_line(t_name, str, data) != 0)
 			return (-1);
@@ -56,8 +57,8 @@ int	parse_textures(t_data *data, int fd)
 			&& data->verif[3] == 1 && data->verif[4] == 1
 			&& data->verif[5] == 1 && data->verif[6] == 1
 			&& data->verif[7] == 1 && data->verif[8] == 1)
-			break;
-		}
+			break ;
+	}
 	return (0);
 }
 
@@ -83,7 +84,6 @@ char	**malloc_new_map(int *error, t_data *data)
 
 int	duplicate_map(t_data *data, t_player *player)
 {
-	// char	new_map[data->parse->max_height][data->parse->big_line + 1];
 	char	**new_map;
 	int		i;
 	int		j;

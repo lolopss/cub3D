@@ -4,7 +4,7 @@ NAME = cub3D
 SRC =	main.c main_functions.c \
 		cub3d_exec.c cub3d_exec2.c \
 		check_args.c check_args2.c check_args3.c \
-		utils.c utils2.c ft_split.c minimap.c \
+		utils.c utils2.c ft_strlen.c ft_split.c minimap.c \
 		map_utils.c map_utils2.c map_utils3.c get_textures.c get_texture2.c pixel_color_door.c\
 		key.c key_rotate.c \
 

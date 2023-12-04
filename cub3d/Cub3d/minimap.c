@@ -6,16 +6,19 @@
 /*   By: ldaniel <ldaniel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/17 14:24:26 by ldaniel           #+#    #+#             */
-/*   Updated: 2023/11/30 18:47:47 by ldaniel          ###   ########.fr       */
+/*   Updated: 2023/12/04 15:16:16 by ldaniel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-void draw_cub(t_data *data, int i, int j, int color)
+void	draw_cub(t_data *data, int i, int j, int color)
 {
-	int end_i = i + 10;
-	int end_j = j + 10;
+	int	end_i;
+	int	end_j;
+
+	end_i = i + 10;
+	end_j = j + 10;
 	while (i <= end_i)
 	{
 		j = end_j - 10;
@@ -25,18 +28,18 @@ void draw_cub(t_data *data, int i, int j, int color)
 	}
 }
 
-void draw_minimap_pixel(t_data *data, int i, int j, char value)
+void	draw_minimap_pixel(t_data *data, int i, int j, char value)
 {
-	int color;
+	int	color;
 
 	if (value == '0')
-		color = 0x0000FF; // Blue for open space
+		color = 0x0000FF;
 	else if (value == '1')
-		color = 0x00FFFF; // Cyan for walls
+		color = 0x00FFFF;
 	else if (value == 'D' || value == 'O')
-		color = 0x964B00; // green for door
+		color = 0x964B00;
 	else if (value == 'A')
-		color = 0xFF0099; // green for door
+		color = 0xFFFFF100;
 	else if (value == 'J')
 		color = 0xFF0000;
 	else
@@ -44,22 +47,31 @@ void draw_minimap_pixel(t_data *data, int i, int j, char value)
 	draw_cub(data, i, j, color);
 }
 
-void draw_minimap(t_data *data)
+void	draw_minimap(t_data *data)
 {
-	int map_x, map_y;
+	int		map_x;
+	int		map_y;
+	char	block_type;
 
-	for (map_y = 0; map_y < 11; map_y++)
+	map_y = -1;
+	while (++map_y < 11)
 	{
-		for (map_x = 0; map_x < 11; map_x++)
+		map_x = -1;
+		while (++map_x < 11)
 		{
-			char block_type;
-			if ((int)data->player->y + map_y - 5 < 0 || (int)data->player->x + map_x - 5 < 0 || (int)data->player->x + map_x - 5 > data->parse->max_height - 5 || (int)data->player->y + map_y - 5 >= data->parse->big_line)
+			if ((int)data->player->y + map_y - 5 < 0
+				|| (int)data->player->x + map_x - 5 < 0
+				|| (int)data->player->x + map_x - 5
+				> data->parse->max_height - 2
+				|| (int)data->player->y + map_y - 5 > data->parse->big_line)
 				block_type = 'W';
 			else
-				block_type = data->map[(int)data->player->x + map_x - 5][(int)data->player->y + map_y - 5];
+				block_type = data->map[(int)data->player->x + map_x - 5]
+				[(int)data->player->y + map_y - 5];
 			if (map_x == 5 && map_y == 5)
 				block_type = 'J';
-			draw_minimap_pixel(data, (map_x * 10) + 30, (map_y * 10) + 30, block_type);
+			draw_minimap_pixel(data, (map_x * 10) + 30,
+				(map_y * 10) + 30, block_type);
 		}
 	}
 }

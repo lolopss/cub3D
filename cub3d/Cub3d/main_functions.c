@@ -6,7 +6,7 @@
 /*   By: ldaniel <ldaniel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/25 17:34:21 by ldaniel           #+#    #+#             */
-/*   Updated: 2023/11/30 18:29:31 by ldaniel          ###   ########.fr       */
+/*   Updated: 2023/12/04 15:43:33 by ldaniel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@ int	ft_mouse_handle(int x, int y, t_data *data)
 int	init_mlx(t_data *data, t_player *player)
 {
 	data->map = NULL;
+	data->parse_init = 0;
 	data->img_init = 0;
 	data->init = 0;
 	player->x = -1;
@@ -36,7 +37,6 @@ int	init_mlx(t_data *data, t_player *player)
 	data->x_win = 800;
 	data->y_win = 700;
 	data->mlx = mlx_init();
-
 	if (!data->mlx)
 	{
 		free(data);

@@ -3,8 +3,8 @@ SO textures/mur.xpm
 EA textures/karl.xpm
 WE textures/sheldon2-resized.xpm
 D textures/door2.xpm
-A1 textures/cat_closed.xpm
-A2 textures/cat_open.xpm
+A1 textures/bonk1.xpm
+A2 textures/bonk2.xpm
 
 F 0,0,0
 C 150,240,255

@@ -1,13 +1,13 @@
 ## Commands
 
-|Action |Key |
+| Action | Key |
 |---|---|
-|ESC ou ❌|fermer le jeu|
+|ESC ou ❌| Close the game|
 |A| left|
 |D| right|
 |W| forward|
 |S| back|
-|Space| opens door|
+|Space| open door|
 |→ |turn camera right|
 |← |turn camera left|
 |Mouse|look around|

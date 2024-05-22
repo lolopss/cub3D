@@ -1,6 +1,6 @@
 ## Commands
 
-| Action | Key |
+| Key | Action |
 |---|---|
 |ESC ou ❌| Close the game|
 |A| left|
